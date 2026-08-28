@@ -8,6 +8,7 @@
       content="DanG Consulting LLC provides construction clean-up, post-construction debris and junk removal, site prep and final cleaning, and oilfield pad and lease cleanup with digital job reporting."
     >
     <title>DanG Consulting LLC | Construction Clean-Up &amp; Junk Removal</title>
+    <link rel="stylesheet" href="scrollcraft.css">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
@@ -28,57 +29,45 @@
     </header>
 
     <main id="top">
-      <section class="hero section-shell">
-        <div class="hero-copy">
-          <p class="section-label">DanG Consulting LLC</p>
-          <h1>Construction Clean-Up and Junk Removal Done Right</h1>
-          <p class="hero-lede">
-            DanG Consulting LLC handles post-construction debris removal, site prep, final cleaning, and junk hauling,
-            plus dumpster roll-off and porta potty rentals &mdash; and oilfield pad and lease cleanup &mdash; backed by
-            field experience and clear digital job reporting.
-          </p>
-          <div class="hero-actions" role="group" aria-label="Primary actions">
-            <a class="button button-primary" href="#contact">Request a Cleanup</a>
-            <a class="button button-secondary" href="#services">View Services</a>
-          </div>
-          <ul class="hero-proof">
-            <li>Insured</li>
-            <li>Post-construction</li>
-            <li>Junk removal</li>
-            <li>Site-ready finish</li>
-          </ul>
-        </div>
+      <section class="hero-act" data-sc-act="scrub" data-sc-span="2.4" data-sc-dwell="0.35">
+        <div class="sc-stage" data-sc-stage>
+          <img class="sc-stage__poster" src="assets/hero-drive-poster.jpg" alt="">
+          <video
+            data-sc-scrub
+            data-sc-src="assets/hero-drive.mp4"
+            data-sc-src-mobile="assets/hero-drive-m.mp4"
+            playsinline
+            muted
+            aria-label="Dashboard view of a DanG Consulting truck driving a jobsite route"
+          ></video>
+          <div class="sc-scrim sc-scrim--lead"></div>
 
-        <div class="hero-visual" role="group" aria-label="Construction cleanup job status overview">
+          <div class="hero-copy hero-stage-copy" data-sc-cue="0.44">
+            <p class="section-label">DanG Consulting LLC</p>
+            <h1>Construction Clean-Up and Junk Removal Done Right</h1>
+            <p class="hero-lede">
+              DanG Consulting LLC handles post-construction debris removal, site prep, final cleaning, and junk hauling,
+              plus dumpster roll-off and porta potty rentals &mdash; and oilfield pad and lease cleanup &mdash; backed by
+              field experience and clear digital job reporting.
+            </p>
+            <div class="hero-actions" role="group" aria-label="Primary actions">
+              <a class="button button-primary" href="#contact">Request a Cleanup</a>
+              <a class="button button-secondary" href="#services">View Services</a>
+            </div>
+            <ul class="hero-proof">
+              <li>Insured</li>
+              <li>Post-construction</li>
+              <li>Junk removal</li>
+              <li>Site-ready finish</li>
+            </ul>
+          </div>
+
           <img
-            class="owner-card"
+            class="owner-card owner-card--stage"
+            data-sc-cue="0.6"
             src="assets/dang-consulting-owner-card.png"
             alt="DanG Consulting LLC brand image with contact details for Dan Garcia"
           >
-          <div class="status-board" role="group" aria-label="Field coordination dashboard preview">
-            <div class="board-header">
-              <span>Live Job Window</span>
-              <strong>Site Cleanup</strong>
-            </div>
-            <div class="status-grid">
-              <article>
-                <span>Site Access</span>
-                <strong>Cleared</strong>
-              </article>
-              <article>
-                <span>Debris Removal</span>
-                <strong>In Progress</strong>
-              </article>
-              <article>
-                <span>Daily Report</span>
-                <strong>Submitted</strong>
-              </article>
-              <article>
-                <span>Final Walkthrough</span>
-                <strong>Ready</strong>
-              </article>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -222,7 +211,10 @@
         </div>
       </section>
 
-      <section class="framework section-shell">
+      <!-- Static framework section: shown on narrow screens, where the widescreen
+           reveal clip's baked-in text would render too small to read. The boot
+           script below removes one of these two variants before the engine mounts. -->
+      <section class="framework section-shell" data-framework-static>
         <div class="section-heading">
           <p class="section-label">Operating framework</p>
           <h2>Built on 5 &bull; 17 &bull; 32</h2>
@@ -244,6 +236,37 @@
             <p>A structured final walkthrough and report after the job is complete.</p>
           </li>
         </ul>
+      </section>
+
+      <!-- Scroll-scrubbed framework reveal: wide screens only. -->
+      <section
+        class="framework-act"
+        data-framework-scrub
+        data-sc-act="scrub"
+        data-sc-span="3"
+        data-sc-dwell="0.45"
+        hidden
+      >
+        <div class="sc-stage" data-sc-stage>
+          <img class="sc-stage__poster" src="assets/framework-reveal-poster.jpg" alt="">
+          <video
+            data-sc-scrub
+            data-sc-src="assets/framework-reveal.mp4"
+            data-sc-src-mobile="assets/framework-reveal-m.mp4"
+            playsinline
+            muted
+            aria-hidden="true"
+          ></video>
+          <div class="visually-hidden">
+            <p>Operating framework</p>
+            <h2>Built on 5 &bull; 17 &bull; 32</h2>
+            <ul>
+              <li>5 Core Promises: safety, reliability, communication, accountability, and field execution.</li>
+              <li>17 Point Readiness Review: a pre-job scope and site walkthrough before crews start.</li>
+              <li>32 Point Closeout Standard: a structured final walkthrough and report after the job is complete.</li>
+            </ul>
+          </div>
+        </div>
       </section>
 
       <section class="why section-shell">
@@ -331,5 +354,25 @@
       <a href="mailto:dang17llc@gmail.com">dang17llc@gmail.com</a>
       <a href="https://dangoilfield.com">dangoilfield.com</a>
     </footer>
+
+    <script src="scrollcraft.js"></script>
+    <script>
+      (function () {
+        // Pick one framework variant before the engine mounts: the widescreen
+        // reveal clip's text is unreadable below ~860px, so narrow screens keep
+        // the static cards and the scrub act is removed from the DOM (and vice
+        // versa on wide screens).
+        var wide = matchMedia('(min-width: 861px)').matches;
+        var staticSec = document.querySelector('[data-framework-static]');
+        var scrubSec = document.querySelector('[data-framework-scrub]');
+        if (wide) {
+          staticSec.remove();
+          scrubSec.hidden = false;
+        } else {
+          scrubSec.remove();
+        }
+        ScrollCraft.mount(document.body);
+      })();
+    </script>
   </body>
 </html>
